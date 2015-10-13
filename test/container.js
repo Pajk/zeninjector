@@ -76,6 +76,20 @@ suite('container', function() {
       }, /already registered/i);
     });
 
+    test('allow mocks', function(done) {
+      var container = new Container({logger: logger, mock_modules: { first: true }});
+      var first = function() { return 'orig'; }
+      var mock = function () { return 'mock'; }
+
+      container.register('first', mock);
+      container.register('first', first);
+
+      container.resolve('first').done(function(resolved) {
+        assert.equal(resolved, 'mock');
+        done();
+      });
+    });
+
   });
 
   suite('register/resolve', function() {
