@@ -16,10 +16,10 @@
     "dependency injection"
   ],
   "dependencies": {
-    "bluebird": "^2.1",
-    "split": "^0.3.0",
-    "lodash": "^2.4.1",
-    "multi-glob": "https://github.com/geekingfrog/multi-glob/tarball/master"
+    "bluebird": "3.0.5",
+    "lodash": "3.10.1",
+    "multi-glob": "1.0.1",
+    "split": "1.0.0"
   },
   "devDependencies": {
     "chai": "~1.9.0",
