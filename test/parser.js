@@ -35,8 +35,8 @@ suite('parser', function() {
     })
     .catch(function(err) {
       assert.include(err.message, 'Unexpected token');
-      assert.include(err.toString(), 'syntaxError.js', 'Error message should contains filename');
-      assert.include(err.toString(), ':8', 'Error message should containt line number of the problem')
+      assert.include(err.toString(), 'syntaxError.js', 'Error message contains the filename');
+      assert.include(err.toString(), ':8', 'Error message contains the line number of the problem')
     }).nodeify(done);
   });
 
