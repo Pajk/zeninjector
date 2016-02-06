@@ -28,6 +28,18 @@ suite('parser', function() {
     }).nodeify(done);
   });
 
+  test('fails with syntax error showing the exact place of the problem', function(done) {
+    var modules = parser.extractModulesFromFile('test/files/syntaxError.js');
+    modules.then(function() {
+      done(new Error('Must throw error if there is a syntax error'));
+    })
+    .catch(function(err) {
+      assert.include(err.message, 'Unexpected token');
+      assert.include(err.toString(), 'syntaxError.js', 'Error message should contains filename');
+      assert.include(err.toString(), ':8', 'Error message should containt line number of the problem')
+    }).nodeify(done);
+  });
+
   test('correctly find the modules', function(done) {
     var modules = parser.extractModulesFromFile('test/files/module.js');
     modules.then(function(modules) {
