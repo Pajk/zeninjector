@@ -1,15 +1,19 @@
 {
-  "name": "zeninjector",
-  "version": "0.1.12",
+  "name": "zazeninjector",
+  "version": "0.2.0",
   "description": "Simple dependency injection library using promises",
   "main": "lib/container.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec"
   },
   "author": "Grégoire Charvet <greg@geekingfrog.com>",
+  "contributors": [{
+    "name": "Pavel Pokorny",
+    "email": "pajkycz@gmail.com"
+  }],
   "repository": {
     "type": "git",
-    "url": "git://github.com/geekingfrog/zeninjector"
+    "url": "git://github.com/Pajk/zeninjector"
   },
   "license": "MIT",
   "keywords": [
@@ -28,3 +32,4 @@
     "sinon": "^1.10.2"
   }
 }
+
