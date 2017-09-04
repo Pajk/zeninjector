@@ -277,4 +277,48 @@ suite('container', function() {
 
   });
 
+  suite('Mocking', function() {
+
+    test('run foo methods without mocking', function(done) {
+      var container = new Container();
+
+      container.scan(['test/files/foo.js'])
+      .then(function() {
+        return container.resolve('foo');
+      })
+      .then(function(a) {
+        assert.equal(a.get_x(), 1);
+        assert.equal(a.get_y(), 2);
+        done();
+      })
+      .catch(function(err) {
+        done(err);
+      });
+    });
+
+    test('enable mocking single function', function(done) {
+      var container = new Container({
+        mock_modules: {},
+        partial_mock_modules: { foo: true }
+      });
+
+      container.scan(['test/files/foo_mock.js'])
+      .then(function() {
+        return container.scan(['test/files/foo.js'])
+      })
+      .then(function() {
+        return container.resolve('foo');
+      })
+      .then(function(a) {
+        assert.equal(a.get_x(), 150);
+        assert.equal(a.get_y(), 2);
+        done();
+      })
+      .catch(function(err) {
+        done(err);
+      });
+    });
+
+  });
+
 });
